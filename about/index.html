@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Marco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/app.css">
+  <!-- <link rel='stylesheet' href='http://fonts.useso.com/css?family=Source+Code+Pro'> -->
+</head>
+
+<body>
+  <nav class="app-nav">
+  
+      
+        <a class="active" href="/.">home</a>
+        
+
+      
+  
+      
+        <a href="/archives">archive</a>
+      
+  
+      
+        <a href="/about">about</a>
+      
+  
+</nav>
+
+  <main class="page">
+  <div>
+    <div>
+    <p>Olá</p>
+    <h2 id="Contato"><a href="#Contato" class="headerlink" title="Contato"></a>Contato</h2>
+    <ul>
+        <li>Email: vinisdl@hotmail.com</li>
+    </ul>
+    <h2 id="Information"><a href="#Information" class="headerlink" title="Information"></a>Informação</h2>
+    <ul>
+        <li>07 / 07 / 1993</li>
+        <li><p>Bacharel / Ciência da computação - Universidade do vale dos sinos (Unisinos - 2016 - 2021) </p></li>        
+        <li><p>GitHub: <a href="https://github.com/vinisdl" target="_blank" rel="external">https://github.com/vinisdl</a></p></li>                
+    </ul>
+    
+    <h2>Habilidades </h2>    
+    <ul id="skils" class="skills" s="">        
+    </ul>
+    <script type="text/javascript">
+    setTimeout(function(){ 
+        $( document ).ready(function() {
+            $.ajax({
+                    url: "https://api.linkedin.com/v1/people/~:(id,skills)?oauth2_access_token=AQUbzUtc7vV-oYgtanz-CztOrknQlfIgR_ubClWeXKoDzF7OYAM2fXiL-sc_2ZT-RvQiPZdGBW63X4CuZ2sZ4hSlrAbA-dTSz6jpCOHqVybpDgr-mOjxXQDBwRK-G39Jx00exW-OX5QowxL3GVTkCrYzIOVqszW1PocBeIIIgUmlFtHb-lE",
+                    type: 'GET',
+                    crossDomain: true,
+                    dataType: 'jsonp',
+                    success: function(data) { writeSkills(data) },            
+            });
+        });
+    }, 500);
+        
+        function writeSkills(data){
+            calc = 1;
+            html = "";
+            for (i = 0; i <= 5; i++) {                             
+            html += 
+                '<li> ' +
+                '<span>'+data.skills.values[i].skill.name+'</span> '+
+                '<progress value="'+  84 / calc  +'" max="100">'+ 84 / calc +'%</progress>'+
+                '</li>';
+                calc += 0.1;         
+            }
+            
+             $("#skils").html(html)
+            
+        }
+        
+    </script>
+    
+</div>
+
+
+
+  </div>
+</main>
+<script src="/js/jquery-2.2.3.min.js"></script>
+
+</body>
+</html>
